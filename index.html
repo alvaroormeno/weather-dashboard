@@ -12,30 +12,43 @@
         </header>
 
         <main class="row w-100 justify-content-md-center d-flex flex-row flex-wrap">
-            <div class="left col-3">
+            <section class="left col-3">
                 <div class="col col-10">
                     <h2>Search City</h2>
                     <input type="text" name="" id="citySearch" placeholder="Miami">
                     <button class="btn btn-primary">Search</button>
 
                 </div>
+                <hr>
                 <div class="col col-10">
                     <h2>Search History</h2>
                     <button class="btn btn-primary"> Clear Search</button>
 
                 </div>
 
-            </div>
-            <div class="right col-7">
-                <h1>heyyyyyy</h1>
+            </section>
 
-            </div>
+            <section class="right col-7">
+                <div id="cityResult">
+
+                </div>
+                <div id="forecast">
+
+                </div>
+                <div id="forecastResult">
+
+                </div>
+
+            </section>
 
         </main>
 
         <footer>
 
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="./assets/js/script.js"></script>
         
 
     </body>
