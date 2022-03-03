@@ -11,35 +11,56 @@
             <h1 class="m-5">Weather Dashboard</h1>
         </header>
 
-        <main class="row w-100 justify-content-md-center d-flex flex-row flex-wrap">
-            <section class="left col-3">
-                <div class="col col-10">
-                    <h2>Search City</h2>
-                    <input type="text" name="" id="citySearch" placeholder="Miami">
-                    <button class="btn btn-primary">Search</button>
+        <main class="container  justify-content-md-center d-flex flex-row flex-wrap">
 
-                </div>
-                <hr>
-                <div class="col col-10">
-                    <h2>Search History</h2>
-                    <button class="btn btn-primary"> Clear Search</button>
+            <div class="row w-100 ">
+                <section class="left col-3">
 
-                </div>
+                    <div class=" justify-content-md-center d-flex flex-row flex-wrap">
+                        <h2>Search City</h2>
+                        <input type="text" name="" id="citySearch" placeholder="Miami">
+                        <button class="btn btn-primary searchBtn">Search</button>
 
-            </section>
+                    </div>
+                    <hr>
+                    <div class=" justify-content-md-center d-flex flex-row flex-wrap">
+                        <h2>Search History</h2>
+                        <button class="btn btn-primary"> Clear Search</button>
 
-            <section class="right col-7">
-                <div id="cityResult">
+                    </div>
 
-                </div>
-                <div id="forecast">
+                </section>
 
-                </div>
-                <div id="forecastResult">
+                <section class="right col-9">
 
-                </div>
+                    <div class="justify-content-md-center d-flex flex-column" id="city-search-container">
+                        <h2 id="city-name">city name</h2>
+                        <h3 id="date">02/02/22</h3>
+                        <h4 id="weather-today">Current Weather:</h4>
+                        <h4 id="temp-today">Temp: 41.99 °F</h4>
+                        <h4 id="wind-today">Wind: 5.75 MPH</h4>
+                        <h4 id="humidity-today">Humidity: 72 %</h4>
+                        <h4 id="uv-today">UV Index: 0</h4>
 
-            </section>
+                    </div>
+
+                    <div id="forecast">
+
+                    </div>
+                    <div id="forecastResult">
+
+                    </div>
+
+                </section>
+
+
+
+
+
+            </div>
+            
+
+           
 
         </main>
 
