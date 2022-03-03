@@ -59,8 +59,6 @@ var displayCurrentW = function(current) {
     // fetch weather icon
     var weatherIcon = "https://openweathermap.org/img/wn/" + current.weather[0].icon + "@2x.png"
 
-    // display info to element variables
-
     //Create Date today h3 --- add text content from moment --- append to weatherDisplayEl
     var dateTodayEL = document.createElement("h3")
     dateTodayEL.textContent = "Date: " + moment().format("MM/DD/YYYY")
@@ -68,7 +66,7 @@ var displayCurrentW = function(current) {
 
     //Create weather today h4 --- add inner Html --- append to weatherDisplayEl
     var weatherTodayEl = document.createElement("h4")
-    weatherTodayEl.innerHTML = "Current Weather: <img src='" + weatherIcon + "' alt='weather-icon' max-width=50%/> " + current.weather[0].description
+    weatherTodayEl.innerHTML = "Current Weather: <img src='" + weatherIcon + "' alt='weather-icon' width='50' height='50'/> " + current.weather[0].description
     WeatherDisplayEl.appendChild(weatherTodayEl)
 
     //Create temp today h4 --- add text content --- append to weatherDisplayEl
@@ -76,21 +74,36 @@ var displayCurrentW = function(current) {
     tempTodayEl.textContent = "Temp: " + current.temp + " °F";
     WeatherDisplayEl.appendChild(tempTodayEl)
 
+    //Create wind today h4 --- add text content --- append to weatherDisplayEl
+    var windTodayEl = document.createElement("h4")
+    windTodayEl.textContent = "Wind: " + current.wind_speed + " MPH";
+    WeatherDisplayEl.appendChild(windTodayEl)
 
+    //Create humidity today h4 --- add text content --- append to weatherDisplayEl
+    var humidityTodayEl = document.createElement("h4")
+    humidityTodayEl.textContent = "Humidity: " + current.humidity + " %";
+    WeatherDisplayEl.appendChild(humidityTodayEl)
 
+    //Create uv today h4 
+    var uvTodayEl = document.createElement("h4")
+    uvTodayEl.textContent = "UV Index: ";
 
+    //Create uvIndex span --- add text content
+    var uvIndex = document.createElement("span");
+    uvIndex.textContent = current.uvi;
+    // append uvIndex next to uvToday
+    uvTodayEl.appendChild(uvIndex)
+    // add class to change color depending on uv number 
+    if (current.uvi < 2) {
+        uvIndex.className = "low-uv"
+    } else if (current.uvi >= 2 && current.uvi < 6) {
+        uvIndex.className = "medium-uv"
+    } else {
+        uvIndex.className = "high-uv"
+    }
+    // append uvToday to WeatherDisplayeL
+    WeatherDisplayEl.appendChild(uvTodayEl)
     
-    // dateTodayEL = 
-    // weatherTodayEl = $("weather-today")
-    // tempTodayEl = $("#temp-today")
-    // windTodayEl = $("#wind-today")
-    // humidityTodayEl = $("#wind-today")
-    // uvTodayEl = $("#uv-today")
-
-
-
-
-
 }
 
 
