@@ -1,5 +1,12 @@
 var WeatherTitleEl = $("#weather-title")
 var WeatherDisplayEl = $("#weather-display")
+var cityNameEl = $("#city-name")
+var dateTodayEL = $("#date-today")
+var weatherTodayEl = $("weather-today")
+var tempTodayEl = $("#temp-today")
+var windTodayEl = $("#wind-today")
+var humidityTodayEl = $("#wind-today")
+var uvTodayEl = $("#uv-today")
 
 var apikey = "bde2fddb9d1baf4bcf15398e8a8d6454"
 
@@ -53,7 +60,7 @@ var displayCurrentW = function(current) {
     // fetch weather icon
     var weatherIcon = "https://openweathermap.org/img/wn/" + current.weather[0].icon + "@2x.png"
 
-    
+
 
 
 
