@@ -5,3 +5,14 @@
 .left {
     background-color: blue;
 }
+
+.card {
+    margin: 0 0 20px 0;
+    border: 3px solid var(--dark);
+    border-radius: var(--border-radius);
+}
+
+.forecast-image {
+    width: 90px;
+    height: 90px;
+}

@@ -1,11 +1,8 @@
 var WeatherDisplayEl = document.querySelector("#city-search-container")
+var forecastDisplayEl = document.querySelector("#forecast-result")
+var forecastTitleEl = document.querySelector("#forecast-title")
 var cityNameEl = document.querySelector("#city-name")
-// var dateTodayEL = $("#date-today")
-// var weatherTodayEl = $("weather-today")
-// var tempTodayEl = $("#temp-today")
-// var windTodayEl = $("#wind-today")
-// var humidityTodayEl = $("#wind-today")
-// var uvTodayEl = $("#uv-today")
+
 
 var apikey = "bde2fddb9d1baf4bcf15398e8a8d6454"
 
@@ -43,7 +40,7 @@ var getCitySearch = function(lon, lat) {
 
                 console.log("City Search data = ", data)
                 displayCurrentW(data.current);
-                // displayForecastW(data.daily);
+                displayForecastW(data.daily);
 
             })
         }
@@ -106,6 +103,49 @@ var displayCurrentW = function(current) {
     
 }
 
+var displayForecastW = function(daily) {
+
+    // display five day forecast title
+    forecastDisplayEl.textContent = "Five Day Forecast"
+
+    // for loop to display 5 times
+    for (var i = 0; i < 5; i++) {
+
+        var forecastIcon = "https://openweathermap.org/img/wn/" + daily[i].weather[0].icon + ".png"
+
+        var forecastCardEl = document.createElement("div");
+        forecastCardEl.className = "card text-center align-items-center p-3";
+        forecastDisplayEl.appendChild(forecastCardEl)
+
+        var forecastDateEl = document.createElement("h3");
+        forecastDateEl.textContent = moment().add((i + 1), 'd').format("MM/DD/YY");
+        forecastCardEl.appendChild(forecastDateEl)
+
+        var forecastImgEl = document.createElement("img");
+        forecastImgEl.className = "forecast-image"
+        forecastImgEl.src = forecastIcon;
+        forecastCardEl.appendChild(forecastImgEl)
+
+        var ImgDescriptionEl = document.createElement("h4");
+        ImgDescriptionEl.textContent = daily[i].weather[0].description;
+        forecastCardEl.appendChild(ImgDescriptionEl)
+
+        var forecastTempEl = document.createElement("h3");
+        forecastTempEl.textContent = "Temp: " + daily[i].temp.day + " °F";
+        forecastCardEl.appendChild(forecastTempEl)
+
+        var forecastWindEl = document.createElement("h3");
+        forecastWindEl.textContent = "Wind: " + daily[i].wind_speed + " MPH";
+        forecastCardEl.appendChild(forecastWindEl)
+
+        var forecastHumEl = document.createElement("h3");
+        forecastHumEl.textContent = "Humidity: " + daily[i].humidity + " %";
+        forecastCardEl.appendChild(forecastHumEl)
+
+
+    }
+
+}
 
 
 
