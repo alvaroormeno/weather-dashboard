@@ -10,9 +10,6 @@ var searchHistory = [];
 
 var apikey = "bde2fddb9d1baf4bcf15398e8a8d6454"
 
-
-
-
 var getCityGeocoding = function (inputCityVal) {
     // use api to search city weather and save it on variable to fetch
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCityVal + "&appid=" + apikey;
@@ -35,7 +32,6 @@ var getCityGeocoding = function (inputCityVal) {
 
 };
 
-
 var getCitySearch = function(lon, lat) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + apikey;
     fetch(apiUrl).then( function(response) {
@@ -55,7 +51,6 @@ var getCitySearch = function(lon, lat) {
 var displayCurrentW = function(current) {
     // reset city-search-container html
     WeatherDisplayEl.innerHTML = ""
-    // citySearchContainer.innerHTML = ""
 
     // fetch weather icon
     var weatherIcon = "https://openweathermap.org/img/wn/" + current.weather[0].icon + "@2x.png"
@@ -105,12 +100,11 @@ var displayCurrentW = function(current) {
     // append uvToday to WeatherDisplayeL
     WeatherDisplayEl.appendChild(uvTodayEl)
     
-}
+};
 
 var displayForecastW = function(daily) {
 
     forecastDisplayEl.innerHTML = ""
-
 
     // display five day forecast title
     forecastTitleEl.textContent = "- Five Day Forecast -"
@@ -150,10 +144,9 @@ var displayForecastW = function(daily) {
         forecastHumEl.textContent = "Humidity: " + daily[i].humidity + " %";
         forecastCardEl.appendChild(forecastHumEl)
 
+    };
 
-    }
-
-}
+};
 
 function saveSearchHistory(inputCityVal) {
     if (!(searchHistory.indexOf(inputCityVal) > -1)) {
@@ -161,7 +154,7 @@ function saveSearchHistory(inputCityVal) {
     }
 
     localStorage.setItem("search", JSON.stringify(searchHistory));
-}
+};
 
 function getSearchHistory() {
     var history = localStorage.getItem("search");
@@ -171,7 +164,7 @@ function getSearchHistory() {
         SearchHistoryBtn(history[x]);
         console.log(SearchHistoryBtn)
     }
-}
+};
 
 function SearchHistoryBtn(cityName) {
     var buttonEl = document.createElement("button");
@@ -180,33 +173,12 @@ function SearchHistoryBtn(cityName) {
     buttonEl.setAttribute("data-search", cityName);
     buttonEl.setAttribute("onclick", "searchThisHistory(getAttribute('data-search'))");
     historyContainerEl.append(buttonEl);
-}
-
-
-
-
-
-
-
-// // START FUNCTION USING JQUERY
-// $(document).on('click','.searchBtn', function() {
-//     // save city input value in variable by looking for id of input and grabbing value
-//     var inputCityVal = $("#citySearch").val().trim();
-//     // display search city in weather container
-//     console.log(cityNameEl)
-//     cityNameEl.textContent= inputCityVal
-    
-
-
-//     getCityGeocoding(inputCityVal)
-
-// })
+};
 
 function clearHistory() {
     localStorage.clear();
     location.reload();
-}
-
+};
 
 var searchThisHistory = function(value) {
     console.log("works!")
@@ -215,7 +187,7 @@ var searchThisHistory = function(value) {
     cityNameEl.textContent= value
     getCityGeocoding(value)
 
-}
+};
 
 var startApp = function() {
 
@@ -227,11 +199,7 @@ var startApp = function() {
     getCityGeocoding(inputCityVal)
     SearchHistoryBtn(inputCityVal);
 
-}
-
-
-
-// historyButtonEl.addEventListener("click", searchThisHistory);
+};
 
 startbtnEl.addEventListener("click", startApp);
 
