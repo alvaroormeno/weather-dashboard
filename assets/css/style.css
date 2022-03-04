@@ -6,6 +6,11 @@
     background-color: blue;
 } */
 
+header {
+    background: linear-gradient(rgba(55, 129, 194, 0.5), rgba(9, 229, 240, 0.5));
+    
+}
+
 .card {
     margin: 0 0 20px 0;
     border: 3px solid var(--dark);

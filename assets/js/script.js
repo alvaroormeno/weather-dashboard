@@ -125,7 +125,7 @@ var displayForecastW = function(daily) {
         forecastCardEl.className = "card text-center align-items-center m-3 border border-dark border-3";
         forecastDisplayEl.appendChild(forecastCardEl)
 
-        var forecastDateEl = document.createElement("h3");
+        var forecastDateEl = document.createElement("h4");
         forecastDateEl.textContent = moment().add((i + 1), 'd').format("MM/DD/YY");
         forecastCardEl.appendChild(forecastDateEl)
 
@@ -138,15 +138,15 @@ var displayForecastW = function(daily) {
         ImgDescriptionEl.textContent = daily[i].weather[0].description;
         forecastCardEl.appendChild(ImgDescriptionEl)
 
-        var forecastTempEl = document.createElement("h3");
+        var forecastTempEl = document.createElement("h4");
         forecastTempEl.textContent = "Temp: " + daily[i].temp.day + " °F";
         forecastCardEl.appendChild(forecastTempEl)
 
-        var forecastWindEl = document.createElement("h3");
+        var forecastWindEl = document.createElement("h4");
         forecastWindEl.textContent = "Wind: " + daily[i].wind_speed + " MPH";
         forecastCardEl.appendChild(forecastWindEl)
 
-        var forecastHumEl = document.createElement("h3");
+        var forecastHumEl = document.createElement("h4");
         forecastHumEl.textContent = "Humidity: " + daily[i].humidity + " %";
         forecastCardEl.appendChild(forecastHumEl)
 
@@ -175,7 +175,7 @@ function getSearchHistory() {
 
 function SearchHistoryBtn(cityName) {
     var buttonEl = document.createElement("button");
-    buttonEl.className = "btn btn-primary history-btn m-1";
+    buttonEl.className = "btn btn-secondary history-btn m-1";
     buttonEl.textContent = cityName;
     buttonEl.setAttribute("data-search", cityName);
     buttonEl.setAttribute("onclick", "searchThisHistory(getAttribute('data-search'))");
