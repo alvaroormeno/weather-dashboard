@@ -7,35 +7,39 @@
     </head>
 
     <body>
-        <header >
+        <header class="text-center">
             <h1 class="m-5">Weather Dashboard</h1>
         </header>
 
         <main class="container-fluid  justify-content-md-center d-flex flex-row ">
 
             <div class="row w-100 ">
-                <section class="left col-3">
+                <section class="left col-3 border border-dark border-4" >
 
-                    <div class=" justify-content-md-center d-flex flex-column flex-wrap">
+                    <div class=" text-center justify-content-md-center d-flex flex-column flex-wrap">
                         <h2>Search City</h2>
                         <input type="text" name="" id="citySearch" placeholder="Miami">
-                        <button class="btn btn-primary searchBtn">Search</button>
+                        <button class="btn btn-primary searchBtn m-1">Search</button>
 
                     </div>
                     <hr>
-                    <div class=" justify-content-md-center d-flex flex-column flex-wrap">
+                    <div class=" text-center justify-content-md-center d-flex flex-column flex-wrap">
                         <h2>Search History</h2>
                         <div id="history-container" class="d-flex flex-column"></div>
-                        <button class="btn btn-primary"> Clear Search</button>
+                        <button class="btn btn-primary m-1" onclick="clearHistory()"> Clear Search</button>
 
                     </div>
 
                 </section>
 
-                <section class="right col-9 d-flex flex-column">
+                <section class="right col-9 d-flex flex-column border border-dark border-4">
+
+                    <div class="text-center d-flex flex-column">
+                        <h2 id="city-name"></h2>
+                    </div>
 
                     <div class="justify-content-md-center d-flex flex-column" id="city-search-container">
-                        <h2 id="city-name"></h2>
+                        <!-- <h2 id="city-name"></h2> -->
                         <!-- <h3 id="date-today">02/02/22</h3>
                         <h4 id="weather-today">Current Weather:</h4>
                         <h4 id="temp-today">Temp: 41.99 °F</h4>

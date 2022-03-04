@@ -1,10 +1,10 @@
-.right  {
+/* .right  {
     background-color: aqua;
 }
 
 .left {
     background-color: blue;
-}
+} */
 
 .card {
     margin: 0 0 20px 0;
@@ -15,4 +15,16 @@
 .forecast-image {
     width: 90px;
     height: 90px;
+}
+
+.low-uv {
+    background-color: rgb(144, 238, 144);
+}
+
+.medium-uv {
+    background-color: yellow;
+}
+
+.high-uv {
+    background-color: red;
 }

@@ -109,6 +109,9 @@ var displayCurrentW = function(current) {
 
 var displayForecastW = function(daily) {
 
+    forecastDisplayEl.innerHTML = ""
+
+
     // display five day forecast title
     forecastTitleEl.textContent = "- Five Day Forecast -"
 
@@ -118,7 +121,8 @@ var displayForecastW = function(daily) {
         var forecastIcon = "https://openweathermap.org/img/wn/" + daily[i].weather[0].icon + ".png"
 
         var forecastCardEl = document.createElement("div");
-        forecastCardEl.className = "card text-center align-items-center p-3";
+
+        forecastCardEl.className = "card text-center align-items-center m-3 border border-dark border-3";
         forecastDisplayEl.appendChild(forecastCardEl)
 
         var forecastDateEl = document.createElement("h3");
@@ -171,7 +175,7 @@ function getSearchHistory() {
 
 function SearchHistoryBtn(cityName) {
     var buttonEl = document.createElement("button");
-    buttonEl.className = "btn btn-primary history-btn";
+    buttonEl.className = "btn btn-primary history-btn m-1";
     buttonEl.textContent = cityName;
     buttonEl.setAttribute("data-search", cityName);
     buttonEl.setAttribute("onclick", "searchThisHistory(getAttribute('data-search'))");
@@ -198,16 +202,11 @@ function SearchHistoryBtn(cityName) {
 
 // })
 
-var startApp = function() {
-
-    var inputCityVal = $("#citySearch").val().trim();
-
-    console.log(cityNameEl)
-    cityNameEl.textContent= inputCityVal
-
-    getCityGeocoding(inputCityVal)
-
+function clearHistory() {
+    localStorage.clear();
+    location.reload();
 }
+
 
 var searchThisHistory = function(value) {
     console.log("works!")
@@ -218,7 +217,17 @@ var searchThisHistory = function(value) {
 
 }
 
+var startApp = function() {
 
+    var inputCityVal = $("#citySearch").val().trim().toUpperCase();
+
+    console.log(cityNameEl)
+    cityNameEl.textContent= inputCityVal
+
+    getCityGeocoding(inputCityVal)
+    SearchHistoryBtn(inputCityVal);
+
+}
 
 
 
