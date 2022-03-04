@@ -2,6 +2,10 @@ var WeatherDisplayEl = document.querySelector("#city-search-container")
 var forecastDisplayEl = document.querySelector("#forecast-result")
 var forecastTitleEl = document.querySelector("#forecast-title")
 var cityNameEl = document.querySelector("#city-name")
+var startbtnEl = document.querySelector(".searchBtn")
+var historyContainerEl = document.querySelector("#history-container")
+var historyButtonEl = document.querySelector(".history-btn")
+var searchHistory = [];
 
 
 var apikey = "bde2fddb9d1baf4bcf15398e8a8d6454"
@@ -50,7 +54,7 @@ var getCitySearch = function(lon, lat) {
 
 var displayCurrentW = function(current) {
     // reset city-search-container html
-    var citySearchContainer = document.querySelector("#city-search-container")
+    WeatherDisplayEl.innerHTML = ""
     // citySearchContainer.innerHTML = ""
 
     // fetch weather icon
@@ -106,7 +110,7 @@ var displayCurrentW = function(current) {
 var displayForecastW = function(daily) {
 
     // display five day forecast title
-    forecastDisplayEl.textContent = "Five Day Forecast"
+    forecastTitleEl.textContent = "- Five Day Forecast -"
 
     // for loop to display 5 times
     for (var i = 0; i < 5; i++) {
@@ -147,6 +151,32 @@ var displayForecastW = function(daily) {
 
 }
 
+function saveSearchHistory(inputCityVal) {
+    if (!(searchHistory.indexOf(inputCityVal) > -1)) {
+        searchHistory.push(inputCityVal);
+    }
+
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+}
+
+function getSearchHistory() {
+    var history = localStorage.getItem("search");
+    history = JSON.parse(history);
+    for (x in history) {
+        searchHistory.push(history[x]);
+        SearchHistoryBtn(history[x]);
+        console.log(SearchHistoryBtn)
+    }
+}
+
+function SearchHistoryBtn(cityName) {
+    var buttonEl = document.createElement("button");
+    buttonEl.className = "btn btn-primary history-btn";
+    buttonEl.textContent = cityName;
+    buttonEl.setAttribute("data-search", cityName);
+    buttonEl.setAttribute("onclick", "searchThisHistory(getAttribute('data-search'))");
+    historyContainerEl.append(buttonEl);
+}
 
 
 
@@ -154,23 +184,46 @@ var displayForecastW = function(daily) {
 
 
 
-
-var saveSearchHistory = function() {
-
-};
-
-
-// START FUNCTION USING JQUERY
-$(document).on('click','.searchBtn', function() {
-    // save city input value in variable by looking for id of input and grabbing value
-    var inputCityVal = $("#citySearch").val();
-    // display search city in weather container
-    console.log(cityNameEl)
-    cityNameEl.textContent= inputCityVal
+// // START FUNCTION USING JQUERY
+// $(document).on('click','.searchBtn', function() {
+//     // save city input value in variable by looking for id of input and grabbing value
+//     var inputCityVal = $("#citySearch").val().trim();
+//     // display search city in weather container
+//     console.log(cityNameEl)
+//     cityNameEl.textContent= inputCityVal
     
 
 
+//     getCityGeocoding(inputCityVal)
+
+// })
+
+var startApp = function() {
+
+    var inputCityVal = $("#citySearch").val().trim();
+
+    console.log(cityNameEl)
+    cityNameEl.textContent= inputCityVal
+
     getCityGeocoding(inputCityVal)
 
-})
+}
 
+var searchThisHistory = function(value) {
+    console.log("works!")
+    // var searchThis = historyButtonEl.getAttribute("data-search")
+    console.log(value)
+    cityNameEl.textContent= value
+    getCityGeocoding(value)
+
+}
+
+
+
+
+
+// historyButtonEl.addEventListener("click", searchThisHistory);
+
+startbtnEl.addEventListener("click", startApp);
+
+getSearchHistory()
